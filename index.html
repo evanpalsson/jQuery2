@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya:700" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/icomoon/style.css">
 	<title>Listo</title>
 </head>
 <body>
+	<header class="nav bgcolor-primary-0">Do Work</header>
+	
 
+	 <div class="container">
+
+	    
+		<div  class="panel bgcolor-primary-1 color-primary-4">
+			<div class='panel-title title-new'>
+				<div>New</div>
+				<div class="inputArea">
+				<form id="newTaskForm">
+		    		
+		    		<input id="newItemInput" placeholder="new task">
+		    		<button id="saveNewItem">Add</button>
+		    		<button id="cancel">Cancel</button>
+				</form>
+				<div class='new-item-header'>
+	    			<button href="#" class="icon-plus" id="newListItem"></button>
+				</div>
+				</div>
+			</div>
+			<ul class='list-group' id='newList'></ul>
+		</div>
+
+		<div class="panel bgcolor-secondary-2-0 color-secondary-1-0">
+	        <div class='panel-title title-inProgress'><div>In Progress</div></div>
+	        <ul class="list-group" id="currentList"></ul>
+		</div>
+
+		<div class="panel bgcolor-complement-0 color-secondary-2-4">
+	        <div class='panel-title title-Archive'><div>Archive</div></div>
+	        <ul class="list-group" id="archivedList"></ul>
+		</div>
+	</div>
 
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="app/scripts/app.js"></script>
+
 </body>
 </html>
