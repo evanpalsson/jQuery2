@@ -10,6 +10,29 @@ $(document).ready(function(){
 	    this.task = task;
 	    this.id = 'new';
 	}
+	var save = function() {
+		localStorage.listo = JSON.stringify(listo);
+	};
+	//loads the array back into listo from localStorage. Then adds the tasks on the page.
+	var load = function(){
+		listo = JSON.parse(localStorage['listo'])
+
+		for(var i=0; i < listo.length; i++){
+			if(listo[i].id === 'new'){
+				$('#newList').append('<a href="#finish" id="item"><li class="list-group-item">' + listo[i].task + '<span class="icon-arrow-right"></span></li></a>');
+			}
+			else if(listo[i].id === 'inProgress') {
+				$('#currentList').append('<a href="#finish" id="inProgress"><li class="list-group-item">' + listo[i].task + '<span class="icon-box-remove"></span></li></a>');
+			}
+			else if(listo[i].id === 'archived'){
+				$('#archivedList').append('<a href="#finish" id="archived"><li class="list-group-item">' + listo[i].task + '<span class="icon-remove"></span></li></a>');
+			}
+		}
+	}
+
+	if(localStorage.listo){
+		load();
+	}
 
 	var addTask = function(task) {
 		if(task){
@@ -44,28 +67,8 @@ $(document).ready(function(){
 		task.remove();
 	};
 	//Saves the array list
-	var save = function() {
-		localStorage['listo'] = JSON.stringify(listo);
-	};
-	//loads the array back into listo from localStorage. Then adds the tasks on the page.
-	var load = function(){
-		listo = JSON.parse(localStorage['listo'])
-
-		for(var i=0; i < listo.length; i++){
-			if(listo[i].id === 'new'){
-				$('#newList').append('<a href="#finish" id="item"><li class="list-group-item">' + listo[i].task + '<span class="icon-arrow-right"></span></li></a>');
-			}
-			else if(listo[i].id === 'inProgress') {
-				$('#currentList').append('<a href="#finish" id="inProgress"><li class="list-group-item">' + listo[i].task + '<span class="icon-box-remove"></span></li></a>');
-			}
-			else if(listo[i].id === 'archived'){
-				$('#archivedList').append('<a href="#finish" id="archived"><li class="list-group-item">' + listo[i].task + '<span class="icon-remove"></span></li></a>');
-			}
-		}
-	}
-	if(localStorage.length){
-		load();
-	}
+	
+	
 	//listener events
 
 	$('#saveNewItem').on('click', function (e) {
